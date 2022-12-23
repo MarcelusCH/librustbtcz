@@ -200,12 +200,12 @@ pub const MAIN_NETWORK: MainNetwork = MainNetwork;
 impl Parameters for MainNetwork {
     fn activation_height(&self, nu: NetworkUpgrade) -> Option<BlockHeight> {
         match nu {
-            NetworkUpgrade::Overwinter => Some(BlockHeight(347_500)),
-            NetworkUpgrade::Sapling => Some(BlockHeight(419_200)),
-            NetworkUpgrade::Blossom => Some(BlockHeight(653_600)),
-            NetworkUpgrade::Heartwood => Some(BlockHeight(903_000)),
-            NetworkUpgrade::Canopy => Some(BlockHeight(1_046_400)),
-            NetworkUpgrade::Nu5 => Some(BlockHeight(1_687_104)),
+            NetworkUpgrade::Overwinter => Some(BlockHeight(328_500)),
+            NetworkUpgrade::Sapling => Some(BlockHeight(328_500)),
+            NetworkUpgrade::Blossom => Some(BlockHeight(10_687_104)),
+            NetworkUpgrade::Heartwood => Some(BlockHeight(10_687_104)),
+            NetworkUpgrade::Canopy => Some(BlockHeight(10_687_104)),
+            NetworkUpgrade::Nu5 => Some(BlockHeight(10_687_104)),
             #[cfg(feature = "zfuture")]
             NetworkUpgrade::ZFuture => None,
         }
@@ -660,8 +660,8 @@ mod tests {
     #[test]
     fn nu_is_active() {
         assert!(!MAIN_NETWORK.is_nu_active(NetworkUpgrade::Overwinter, BlockHeight(0)));
-        assert!(!MAIN_NETWORK.is_nu_active(NetworkUpgrade::Overwinter, BlockHeight(347_499)));
-        assert!(MAIN_NETWORK.is_nu_active(NetworkUpgrade::Overwinter, BlockHeight(347_500)));
+        assert!(!MAIN_NETWORK.is_nu_active(NetworkUpgrade::Overwinter, BlockHeight(328_499)));
+        assert!(MAIN_NETWORK.is_nu_active(NetworkUpgrade::Overwinter, BlockHeight(328_500)));
     }
 
     #[test]
@@ -685,19 +685,19 @@ mod tests {
             BranchId::Sapling,
         );
         assert_eq!(
-            BranchId::for_height(&MAIN_NETWORK, BlockHeight(903_000)),
+            BranchId::for_height(&MAIN_NETWORK, BlockHeight(10_046_400)),
             BranchId::Heartwood,
         );
         assert_eq!(
-            BranchId::for_height(&MAIN_NETWORK, BlockHeight(1_046_400)),
+            BranchId::for_height(&MAIN_NETWORK, BlockHeight(10_046_400)),
             BranchId::Canopy,
         );
         assert_eq!(
-            BranchId::for_height(&MAIN_NETWORK, BlockHeight(1_687_104)),
+            BranchId::for_height(&MAIN_NETWORK, BlockHeight(10_046_400)),
             BranchId::Nu5,
         );
         assert_eq!(
-            BranchId::for_height(&MAIN_NETWORK, BlockHeight(5_000_000)),
+            BranchId::for_height(&MAIN_NETWORK, BlockHeight(10_046_400)),
             BranchId::Nu5,
         );
     }

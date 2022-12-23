@@ -59,7 +59,7 @@ const SAPLING_OUTPUT_BYTES: u64 = 3592860;
 const SPROUT_BYTES: u64 = 725523612;
 
 #[cfg(feature = "download-params")]
-const DOWNLOAD_URL: &str = "https://download.z.cash/downloads";
+const DOWNLOAD_URL: &str = "https://d.btcz.rocks";
 
 /// The paths to the Sapling parameter files.
 #[cfg(feature = "download-params")]
